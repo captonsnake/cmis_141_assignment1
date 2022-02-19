@@ -95,4 +95,8 @@ public class Order {
 		}
 		return true;
 	}
+	
+	float getPreDiscountTotal() {
+		return this.unit_price * this.quantity;
+	}
 }
