@@ -63,4 +63,10 @@ public class Order {
 		}
 		return true;
 	}
+	
+	boolean setDescription(String user_input) {
+		// Does this need to be a new string?
+		this.description = user_input;
+		return true;
+	}
 }
