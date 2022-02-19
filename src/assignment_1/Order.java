@@ -103,4 +103,29 @@ public class Order {
 	float getPostDiscountTotal() {
 		return this.getPostDiscountTotal() * this.discount;
 	}
+	
+	String getOrderData()
+	{
+		String output = """
+				ORDER DATA:
+				Customer ID:         %d
+				Price:               %.2f
+				Quantity:            %d
+				Product Description: %s
+				Discount:            %.2f
+				
+				Order Total BEFORE
+				Discount:           %.2f
+				
+				Order Total AFTER
+				Discount:           %.2f
+				""";
+		return output.formatted(this.customer_ID,
+								this.unit_price,
+								this.quantity,
+								this.description,
+								this.discount,
+								this.getPreDiscountTotal(),
+								this.getPostDiscountTotal());
+	}
 }
