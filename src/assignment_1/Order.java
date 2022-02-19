@@ -12,7 +12,7 @@ public class Order {
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
 			if(this.customer_ID < 0 || this.customer_ID > Integer.MAX_VALUE) {
-				System.err.printf("User input '%s' is out of bounds\n");
+				System.err.printf("User input '%s' is out of bounds\n", user_input);
 				this.customer_ID = 0;
 				return false;
 			}
