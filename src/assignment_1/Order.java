@@ -99,4 +99,8 @@ public class Order {
 	float getPreDiscountTotal() {
 		return this.unit_price * this.quantity;
 	}
+	
+	float getPostDiscountTotal() {
+		return this.getPostDiscountTotal() * this.discount;
+	}
 }
