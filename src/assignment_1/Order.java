@@ -12,7 +12,7 @@ public class Order {
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
 			if(this.customer_ID < 0 || this.customer_ID > Integer.MAX_VALUE) {
-				System.err.printf("User input '%s' is out of bounds");
+				System.err.printf("User input '%s' is out of bounds\n");
 				this.customer_ID = 0;
 				return false;
 			}
@@ -41,7 +41,7 @@ public class Order {
 		}
 		catch(NumberFormatException e) {
 			System.err.println(e);
-			System.err.printf("User input '%s' is not a float. (e.g. 12.45", user_input);
+			System.err.printf("User input '%s' is not a float. (e.g. 12.45)\n", user_input);
 			return false;
 		}
 		return true;
@@ -58,7 +58,7 @@ public class Order {
 		}
 		catch(NumberFormatException e) {
 			System.err.println(e);
-			System.err.printf("User input '%s' is not a float. (e.g. 12.45", user_input);
+			System.err.printf("User input '%s' is not a float. (e.g. '12.45')\n", user_input);
 			return false;
 		}
 		return true;
@@ -67,6 +67,32 @@ public class Order {
 	boolean setDescription(String user_input) {
 		// Does this need to be a new string?
 		this.description = user_input;
+		return true;
+	}
+	
+	boolean setDiscount(String user_input) {
+		if (!user_input.startsWith(".") || !user_input.startsWith("0.")) {
+			user_input = "0." + user_input;
+		}
+		if (user_input.contains("%")) {
+			user_input = user_input.replace("%", "");
+		}
+		try {
+			this.discount = Float.parseFloat(user_input);
+			if(this.discount < 0) {
+				System.err.println("Discount may not be negative.");
+				this.discount = 0;
+				return false;
+			} else if (this.discount > 1) {
+				System.err.println("Discount may not be greater than 1");
+			}
+			
+		}
+		catch(NumberFormatException e) {
+			System.err.println(e);
+			System.err.printf("User input '%s' is not a float. (e.g. '.45')\n", user_input);
+			return false;
+		}
 		return true;
 	}
 }
