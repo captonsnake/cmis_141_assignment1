@@ -42,8 +42,25 @@ public class Order {
 		catch(NumberFormatException e) {
 			System.err.println(e);
 			System.err.printf("User input '%s' is not a float. (e.g. 12.45", user_input);
+			return false;
 		}
-		return false;
+		return true;
 	}
 
+	boolean setQuantity(String user_input) {
+		try {
+			this.quantity = Integer.parseInt(user_input);
+			if(this.quantity < 0) {
+				System.err.println("Quantity may not be negative.");
+				this.quantity = 0;
+				return false;
+				}
+		}
+		catch(NumberFormatException e) {
+			System.err.println(e);
+			System.err.printf("User input '%s' is not a float. (e.g. 12.45", user_input);
+			return false;
+		}
+		return true;
+	}
 }
