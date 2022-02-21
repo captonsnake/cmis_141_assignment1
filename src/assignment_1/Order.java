@@ -13,6 +13,7 @@ public class Order {
 			this.customer_ID = 0;
 			return false;
 		}
+		user_input = this.dataClean(user_input, false);
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
 			if(this.customer_ID < 0 || this.customer_ID > Integer.MAX_VALUE) {
@@ -36,9 +37,7 @@ public class Order {
 			this.unit_price = 0;
 			return false;
 		}
-		if (user_input.startsWith("$")) {
-			user_input = user_input.replace("$", "");
-		}
+		user_input = this.dataClean(user_input);
 		try {
 			this.unit_price = Float.parseFloat(user_input);
 			if(this.unit_price < 0) {
@@ -61,6 +60,7 @@ public class Order {
 			this.quantity = 0;
 			return false;
 		}
+		user_input = this.dataClean(user_input, false);
 		try {
 			this.quantity = Integer.parseInt(user_input);
 			if(this.quantity < 0) {
@@ -71,7 +71,7 @@ public class Order {
 		}
 		catch(NumberFormatException e) {
 			System.err.println(e);
-			System.err.printf("User input '%s' is not a float. (e.g. '12.45')\n", user_input);
+			System.err.printf("User input '%s' is not a whole number.\n", user_input);
 			return false;
 		}
 		return true;
@@ -92,11 +92,9 @@ public class Order {
 			this.discount = 0;
 			return false;
 		}
+		user_input = this.dataClean(user_input);
 		if (!user_input.startsWith(".") && !user_input.startsWith("0.")) {
 			user_input = "0." + user_input;
-		}
-		if (user_input.contains("%")) {
-			user_input = user_input.replace("%", "");
 		}
 		try {
 			this.discount = Float.parseFloat(user_input);
@@ -152,14 +150,14 @@ public class Order {
 	}
 	
 	private String dataClean(String user_input) {
-		return this.dataClean(user_input, false);
+		return this.dataClean(user_input, true);
 	}
 	
 	private String dataClean(String user_input, boolean allowDecimal) {
 		if (!allowDecimal) {
-			user_input = user_input.replaceAll("\\.", "")
+			user_input = user_input.replaceAll("\\.", "");
 		}
-		user_input = user_input.replaceAll("[^\\d\\.-]", user_input)
+		user_input = user_input.replaceAll("[^\\d\\.-]", "");
 		return user_input;
 	}
 }

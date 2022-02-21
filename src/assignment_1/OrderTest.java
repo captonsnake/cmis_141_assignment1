@@ -22,14 +22,14 @@ class OrderTest {
 		assertFalse(order.setCustomerID(""));
 		assertEquals(order.customer_ID, 0);
 		
-		assertFalse(order.setCustomerID("a123"));
-		assertEquals(order.customer_ID, 0);
+		assertTrue(order.setCustomerID("a123"));
+		assertEquals(order.customer_ID, 123);
 		
 		assertFalse(order.setCustomerID("-13"));
 		assertEquals(order.customer_ID, 0);
 		
-		assertFalse(order.setCustomerID("13.1"));
-		assertEquals(order.customer_ID, 0);
+		assertTrue(order.setCustomerID("13.1"));
+		assertEquals(order.customer_ID, 131);
 	}
 
 	@Test
@@ -63,12 +63,11 @@ class OrderTest {
 		assertFalse(order.setUnitPrice("abc"));
 		assertEquals(order.unit_price, 0);
 		
-		assertFalse(order.setUnitPrice("3.18abc"));
-		assertEquals(order.unit_price, 0);
+		assertTrue(order.setUnitPrice("3.18abc"));
+		assertEquals(order.unit_price, 3.18f);
 		
-		assertFalse(order.setUnitPrice("abc3.19"));
-		assertEquals(order.unit_price, 0);
-		
+		assertTrue(order.setUnitPrice("abc3.19"));
+		assertEquals(order.unit_price, 3.19f);		
 	}
 
 	@Test
