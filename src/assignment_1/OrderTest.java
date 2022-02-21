@@ -30,12 +30,64 @@ class OrderTest {
 
 	@Test
 	void testSetUnitPrice() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertTrue(order.setUnitPrice("3.14"));
+		assertEquals(order.unit_price, 3.14f);
+		
+		assertTrue(order.setUnitPrice("3"));
+		assertEquals(order.unit_price, 3.0f);
+		
+		assertTrue(order.setUnitPrice(".30"));
+		assertEquals(order.unit_price, 0.3f);
+		
+		assertTrue(order.setUnitPrice("$0.31"));
+		assertEquals(order.unit_price, 0.31f);
+		
+		assertTrue(order.setUnitPrice("$3.16"));
+		assertEquals(order.unit_price, 3.16f);
+		
+		assertFalse(order.setUnitPrice(""));
+		assertEquals(order.unit_price, 0);
+		
+		assertFalse(order.setUnitPrice("-3.14"));
+		assertEquals(order.unit_price, 0);
+		
+		assertFalse(order.setUnitPrice("abc"));
+		assertEquals(order.unit_price, 0);
+		
+		assertFalse(order.setUnitPrice("3.18abc"));
+		assertEquals(order.unit_price, 0);
+		
+		assertFalse(order.setUnitPrice("abc3.19"));
+		assertEquals(order.unit_price, 0);
+		
 	}
 
 	@Test
 	void testSetQuantity() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertTrue(order.setQuantity("1"));
+		assertEquals(order.quantity, 1);
+		
+		assertFalse(order.setQuantity("-1"));
+		assertEquals(order.quantity, 0);
+		
+		assertFalse(order.setQuantity(""));
+		assertEquals(order.quantity, 0);
+		
+		assertFalse(order.setQuantity("1.1"));
+		assertEquals(order.quantity, 0);
+		
+		assertFalse(order.setQuantity("3.0"));
+		assertEquals(order.quantity, 0);
+		
+		assertFalse(order.setQuantity("abc"));
+		assertEquals(order.quantity, 0);
+		
+		assertFalse(order.setQuantity("1a"));
+		assertEquals(order.quantity, 0);
 	}
 
 	@Test

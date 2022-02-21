@@ -42,6 +42,7 @@ public class Order {
 		catch(NumberFormatException e) {
 			System.err.println(e);
 			System.err.printf("User input '%s' is not a float. (e.g. 12.45)\n", user_input);
+			this.unit_price = 0;
 			return false;
 		}
 		return true;
