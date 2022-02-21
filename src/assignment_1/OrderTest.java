@@ -113,7 +113,28 @@ class OrderTest {
 
 	@Test
 	void testSetDiscount() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertTrue(order.setDiscount(".10"));
+		assertEquals(order.discount, 0.1f);
+		
+		assertTrue(order.setDiscount("20"));
+		assertEquals(order.discount, 0.2f);
+		
+		assertTrue(order.setDiscount("25%"));
+		assertEquals(order.discount, 0.25f);
+		
+		assertFalse(order.setDiscount(null));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount(""));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount("abc"));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount(".1f"));
+		assertEquals(order.discount, 0);
 	}
 
 	@Test

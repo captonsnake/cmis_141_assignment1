@@ -88,7 +88,11 @@ public class Order {
 	}
 	
 	boolean setDiscount(String user_input) {
-		if (!user_input.startsWith(".") || !user_input.startsWith("0.")) {
+		if (user_input == null) {
+			this.discount = 0;
+			return false;
+		}
+		if (!user_input.startsWith(".") && !user_input.startsWith("0.")) {
 			user_input = "0." + user_input;
 		}
 		if (user_input.contains("%")) {
