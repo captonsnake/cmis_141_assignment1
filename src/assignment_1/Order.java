@@ -88,7 +88,7 @@ public class Order {
 	}
 	
 	boolean setDiscount(String user_input) {
-		if (user_input == null) {
+		if (user_input == null || user_input.isEmpty()) {
 			this.discount = 0;
 			return false;
 		}

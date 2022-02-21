@@ -133,7 +133,16 @@ class OrderTest {
 		assertFalse(order.setDiscount("abc"));
 		assertEquals(order.discount, 0);
 		
-		assertFalse(order.setDiscount(".1f"));
+		assertFalse(order.setDiscount(".1k"));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount("-10"));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount("-0.14"));
+		assertEquals(order.discount, 0);
+		
+		assertFalse(order.setDiscount("1.1"));
 		assertEquals(order.discount, 0);
 	}
 
