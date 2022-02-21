@@ -115,6 +115,8 @@ class OrderTest {
 	void testSetDiscount() {
 		Order order = new Order();
 		
+		//many of these tests pass but for the wrong reasons...
+		
 		assertTrue(order.setDiscount(".10"));
 		assertEquals(order.discount, 0.1f);
 		

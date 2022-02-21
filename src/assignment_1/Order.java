@@ -122,7 +122,7 @@ public class Order {
 	}
 	
 	float getPostDiscountTotal() {
-		return this.getPostDiscountTotal() * this.discount;
+		return this.getPreDiscountTotal() * this.discount;
 	}
 	
 	String getOrderData()
