@@ -148,5 +148,18 @@ public class Order {
 								this.discount,
 								this.getPreDiscountTotal(),
 								this.getPostDiscountTotal());
+		
+	}
+	
+	private String dataClean(String user_input) {
+		return this.dataClean(user_input, false);
+	}
+	
+	private String dataClean(String user_input, boolean allowDecimal) {
+		if (!allowDecimal) {
+			user_input = user_input.replaceAll("\\.", "")
+		}
+		user_input = user_input.replaceAll("[^\\d\\.-]", user_input)
+		return user_input;
 	}
 }
