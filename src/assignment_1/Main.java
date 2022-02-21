@@ -27,9 +27,24 @@ public class Main {
 		
 		while(true) {
 			// main loop
-				getInput("Enter Cust ID: ", order::setCustomerID);
-				System.out.println(order.customer_ID);
-				break;
+				getInput("Enter Cust ID:     ", order::setCustomerID);
+				getInput("Enter Unit Price:  ", order::setUnitPrice);
+				getInput("Enter Quantity:    ", order::setQuantity);
+				getInput("Enter Description: ", order::setDescription);
+				getInput("Enter Discount:    ", order::setDiscount);
+				
+				System.out.printf("%s\n", order.getOrderData());
+				
+				System.out.println("Is this correct (y/n): ");
+				Scanner scanner = new Scanner(System.in);
+				String reply = scanner.nextLine();
+				
+				if (reply.equalsIgnoreCase("y")) {
+					System.out.println("Order Complete");
+					break;
+				}
+				System.out.println("Please try again.");
+				
 		}
 	}
 }
