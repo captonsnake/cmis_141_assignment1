@@ -149,17 +149,48 @@ class OrderTest {
 
 	@Test
 	void testGetPreDiscountTotal() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertEquals(order.getPreDiscountTotal(), 0);
+		
+		for(int i = 0; i < 100; i++) {
+			for (float j = 0; j < 10; j += 0.01f) {
+				float total = i * j;
+				order.quantity = i;
+				order.unit_price = j;
+				assertEquals(order.getPreDiscountTotal(), total);
+			}
+		}
 	}
 
 	@Test
 	void testGetPostDiscountTotal() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertEquals(order.getPostDiscountTotal(), 0);
+		
+		for(int i = 0; i < 100; i++) {
+			for (float j = 0; j < 10; j += 0.01) {
+				for (float k = 0; k <= 1; k += 0.01f) {
+					float total = i * j * (1 - k);
+					order.quantity = i;
+					order.unit_price = j;
+					order.discount = k;
+					assertEquals(order.getPostDiscountTotal(), total);
+				}
+			}
+		}
+		
+		order.unit_price = 1.25f;
+		order.quantity = 4;
+		order.discount = 0.1f;
+		
+		assertEquals(order.getPostDiscountTotal(), 4.5f);
+		
+		order.discount = 0;
+		assertEquals(order.getPostDiscountTotal(), 5f);
+		
+		order.discount = 1;
+		assertEquals(order.getPostDiscountTotal(), 0);
 	}
-
-	@Test
-	void testGetOrderData() {
-		fail("Not yet implemented");
-	}
-
 }

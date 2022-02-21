@@ -16,7 +16,7 @@ public class Order {
 		user_input = this.dataClean(user_input, false);
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
-			if(this.customer_ID < 0 || this.customer_ID > Integer.MAX_VALUE) {
+			if(this.customer_ID < 0) {
 				System.err.printf("User input '%s' is out of bounds\n", user_input);
 				this.customer_ID = 0;
 				return false;
@@ -97,7 +97,7 @@ public class Order {
 			this.discount = 0;
 			return false;
 		}
-		if (!user_input.startsWith(".") && !user_input.startsWith("0.")) {
+		if (!user_input.contains(".")) {
 			user_input = "0." + user_input;
 		}
 		try {
@@ -126,7 +126,7 @@ public class Order {
 	}
 	
 	float getPostDiscountTotal() {
-		return this.getPreDiscountTotal() * this.discount;
+		return this.getPreDiscountTotal() * (1 - this.discount);
 	}
 	
 	String getOrderData()
