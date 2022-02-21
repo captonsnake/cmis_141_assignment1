@@ -9,6 +9,10 @@ public class Order {
 	float discount = 0f;
 	
 	boolean setCustomerID(String user_input) {
+		if (user_input == null) {
+			this.customer_ID = 0;
+			return false;
+		}
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
 			if(this.customer_ID < 0 || this.customer_ID > Integer.MAX_VALUE) {
@@ -28,6 +32,10 @@ public class Order {
 	}
 	
 	boolean setUnitPrice(String user_input) {
+		if (user_input == null) {
+			this.unit_price = 0;
+			return false;
+		}
 		if (user_input.startsWith("$")) {
 			user_input = user_input.replace("$", "");
 		}
@@ -49,6 +57,10 @@ public class Order {
 	}
 
 	boolean setQuantity(String user_input) {
+		if (user_input == null) {
+			this.quantity = 0;
+			return false;
+		}
 		try {
 			this.quantity = Integer.parseInt(user_input);
 			if(this.quantity < 0) {
@@ -66,6 +78,10 @@ public class Order {
 	}
 	
 	boolean setDescription(String user_input) {
+		if (user_input == null) {
+			this.description = null;
+			return false;
+		}
 		// Does this need to be a new string?
 		this.description = user_input;
 		return true;

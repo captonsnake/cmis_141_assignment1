@@ -9,8 +9,12 @@ class OrderTest {
 	@Test
 	void testSetCustomerID() {
 		Order order = new Order();
+
 		assertTrue(order.setCustomerID("1234"));
 		assertEquals(order.customer_ID, 1234);
+		
+		assertFalse(order.setCustomerID(null));
+		assertEquals(order.customer_ID, 0);
 		
 		assertFalse(order.setCustomerID("abcd"));
 		assertEquals(order.customer_ID, 0);
@@ -47,6 +51,9 @@ class OrderTest {
 		assertTrue(order.setUnitPrice("$3.16"));
 		assertEquals(order.unit_price, 3.16f);
 		
+		assertFalse(order.setUnitPrice(null));
+		assertEquals(order.unit_price, 0);
+		
 		assertFalse(order.setUnitPrice(""));
 		assertEquals(order.unit_price, 0);
 		
@@ -71,6 +78,9 @@ class OrderTest {
 		assertTrue(order.setQuantity("1"));
 		assertEquals(order.quantity, 1);
 		
+		assertFalse(order.setQuantity(null));
+		assertEquals(order.quantity, 0);
+		
 		assertFalse(order.setQuantity("-1"));
 		assertEquals(order.quantity, 0);
 		
@@ -92,7 +102,13 @@ class OrderTest {
 
 	@Test
 	void testSetDescription() {
-		fail("Not yet implemented");
+		Order order = new Order();
+		
+		assertTrue(order.setDescription("This is a descript"));
+		assertEquals(order.description, "This is a descript");
+		
+		assertFalse(order.setDescription(null));
+		assertEquals(order.description, null);
 	}
 
 	@Test
