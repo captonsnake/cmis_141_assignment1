@@ -122,6 +122,9 @@ class OrderTest {
 		assertTrue(order.setDiscount("20"));
 		assertEquals(order.discount, 0.2f);
 		
+		assertTrue(order.setDiscount("5"));
+		assertEquals(order.discount, 0.05f);
+		
 		assertTrue(order.setDiscount("25%"));
 		assertEquals(order.discount, 0.25f);
 		

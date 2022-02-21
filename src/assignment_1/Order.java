@@ -98,6 +98,11 @@ public class Order {
 			return false;
 		}
 		if (!user_input.contains(".")) {
+			// TODO: BUG here. 5 becomes .50
+			if (user_input.length() == 1)
+			{
+				user_input = "0" + user_input;
+			}
 			user_input = "0." + user_input;
 		}
 		try {
