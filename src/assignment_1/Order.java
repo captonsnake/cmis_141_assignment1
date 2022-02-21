@@ -60,7 +60,7 @@ public class Order {
 			this.quantity = 0;
 			return false;
 		}
-		user_input = this.dataClean(user_input, false);
+		user_input = this.dataClean(user_input, true);
 		try {
 			this.quantity = Integer.parseInt(user_input);
 			if(this.quantity < 0) {
@@ -93,6 +93,10 @@ public class Order {
 			return false;
 		}
 		user_input = this.dataClean(user_input);
+		if (user_input.isEmpty() || user_input.startsWith("-")) {
+			this.discount = 0;
+			return false;
+		}
 		if (!user_input.startsWith(".") && !user_input.startsWith("0.")) {
 			user_input = "0." + user_input;
 		}
@@ -104,6 +108,8 @@ public class Order {
 				return false;
 			} else if (this.discount > 1) {
 				System.err.println("Discount may not be greater than 1");
+				this.discount = 0;
+				return false;
 			}
 			
 		}

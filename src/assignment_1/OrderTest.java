@@ -95,8 +95,8 @@ class OrderTest {
 		assertFalse(order.setQuantity("abc"));
 		assertEquals(order.quantity, 0);
 		
-		assertFalse(order.setQuantity("1a"));
-		assertEquals(order.quantity, 0);
+		assertTrue(order.setQuantity("1a"));
+		assertEquals(order.quantity, 1);
 	}
 
 	@Test
@@ -134,8 +134,8 @@ class OrderTest {
 		assertFalse(order.setDiscount("abc"));
 		assertEquals(order.discount, 0);
 		
-		assertFalse(order.setDiscount(".1k"));
-		assertEquals(order.discount, 0);
+		assertTrue(order.setDiscount(".1k"));
+		assertEquals(order.discount, .1f);
 		
 		assertFalse(order.setDiscount("-10"));
 		assertEquals(order.discount, 0);
