@@ -17,14 +17,14 @@ public class Order {
 		try {
 			this.customer_ID = Integer.parseInt(user_input);
 			if(this.customer_ID < 0) {
-				System.err.printf("User input '%s' is out of bounds\n", user_input);
+//				System.err.printf("User input '%s' is out of bounds\n", user_input);
 				this.customer_ID = 0;
 				return false;
 			}
 		}
 		catch(NumberFormatException e) {
-			System.err.println(e);
-			System.err.printf("User input '%s' is not an integer type.\n", user_input);
+//			System.err.println(e);
+//			System.err.printf("User input '%s' is not an integer type.\n", user_input);
 			this.customer_ID = 0;
 			return false;
 		}
@@ -41,14 +41,14 @@ public class Order {
 		try {
 			this.unit_price = Float.parseFloat(user_input);
 			if(this.unit_price < 0) {
-				System.err.println("Unit price may not be negative.");
+//				System.err.println("Unit price may not be negative.");
 				this.unit_price = 0;
 				return false;
 				}
 		}
 		catch(NumberFormatException e) {
-			System.err.println(e);
-			System.err.printf("User input '%s' is not a float. (e.g. 12.45)\n", user_input);
+//			System.err.println(e);
+//			System.err.printf("User input '%s' is not a float. (e.g. 12.45)\n", user_input);
 			this.unit_price = 0;
 			return false;
 		}
@@ -64,14 +64,14 @@ public class Order {
 		try {
 			this.quantity = Integer.parseInt(user_input);
 			if(this.quantity < 0) {
-				System.err.println("Quantity may not be negative.");
+//				System.err.println("Quantity may not be negative.");
 				this.quantity = 0;
 				return false;
 				}
 		}
 		catch(NumberFormatException e) {
-			System.err.println(e);
-			System.err.printf("User input '%s' is not a whole number.\n", user_input);
+//			System.err.println(e);
+//			System.err.printf("User input '%s' is not a whole number.\n", user_input);
 			return false;
 		}
 		return true;
@@ -103,19 +103,19 @@ public class Order {
 		try {
 			this.discount = Float.parseFloat(user_input);
 			if(this.discount < 0) {
-				System.err.println("Discount may not be negative.");
+//				System.err.println("Discount may not be negative.");
 				this.discount = 0;
 				return false;
 			} else if (this.discount > 1) {
-				System.err.println("Discount may not be greater than 1");
+//				System.err.println("Discount may not be greater than 1");
 				this.discount = 0;
 				return false;
 			}
 			
 		}
 		catch(NumberFormatException e) {
-			System.err.println(e);
-			System.err.printf("User input '%s' is not a float. (e.g. '.45')\n", user_input);
+//			System.err.println(e);
+//			System.err.printf("User input '%s' is not a float. (e.g. '.45')\n", user_input);
 			return false;
 		}
 		return true;
