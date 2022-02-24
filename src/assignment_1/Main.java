@@ -46,23 +46,23 @@ public class Main {
 			// getInput Notes:
 			// I used method references here. I could have made the 
 			// order a class attribute, but that wouldn't be very modular.
-				getInput("Enter Cust ID:     ", order::setCustomerID);
-				getInput("Enter Unit Price:  ", order::setUnitPrice);
-				getInput("Enter Quantity:    ", order::setQuantity);
-				getInput("Enter Description: ", order::setDescription);
-				getInput("Enter Discount:    ", order::setDiscount);
-				
-				System.out.printf("%s\n", order.getOrderData());
-				
-				// Break the loop and exit program prompt.
-				System.out.println("Is this correct (y/n): ");
-				String reply = scanner.nextLine();
-				
-				if (reply.equalsIgnoreCase("y")) {
-					System.out.println("Order Complete");
-					break;
-				}
-				System.out.println("Please try again.");
+			getInput("Enter Cust ID:     ", order::setCustomerID);
+			getInput("Enter Unit Price:  ", order::setUnitPrice);
+			getInput("Enter Quantity:    ", order::setQuantity);
+			getInput("Enter Description: ", order::setDescription);
+			getInput("Enter Discount:    ", order::setDiscount);
+			
+			System.out.printf("%s\n", order.getOrderData());
+			
+			// Break the loop and exit program prompt.
+			System.out.println("Is this correct (y/n): ");
+			String reply = scanner.nextLine();
+			
+			if (reply.equalsIgnoreCase("y")) {
+				System.out.println("Order Complete");
+				break;
+			}
+			System.out.println("Please try again.");
 				
 		}
 		scanner.close();
