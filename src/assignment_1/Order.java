@@ -19,8 +19,8 @@ public class Order {
 	 * @return true if meets requirements for attribute
 	 */
 	boolean setCustomerID(String user_input) {
+		this.customer_ID = 0;
 		if (user_input == null) {
-			this.customer_ID = 0;
 			return false;
 		}
 		user_input = this.dataClean(user_input, false);
@@ -32,7 +32,6 @@ public class Order {
 			}
 		}
 		catch(NumberFormatException e) {
-			this.customer_ID = 0;
 			return false;
 		}
 		return true;
@@ -45,8 +44,8 @@ public class Order {
 	 * @return true if meets requirements for attribute
 	 */
 	boolean setUnitPrice(String user_input) {
+		this.unit_price = 0;
 		if (user_input == null) {
-			this.unit_price = 0;
 			return false;
 		}
 		user_input = this.dataClean(user_input);
@@ -58,7 +57,6 @@ public class Order {
 				}
 		}
 		catch(NumberFormatException e) {
-			this.unit_price = 0;
 			return false;
 		}
 		return true;
@@ -71,8 +69,8 @@ public class Order {
 	 * @return true if meets requirements for attribute
 	 */
 	boolean setQuantity(String user_input) {
+		this.quantity = 0;
 		if (user_input == null) {
-			this.quantity = 0;
 			return false;
 		}
 		user_input = this.dataClean(user_input, true);
@@ -111,13 +109,12 @@ public class Order {
 	 * @return true if meets requirements for attribute
 	 */
 	boolean setDiscount(String user_input) {
+		this.discount = 0;
 		if (user_input == null || user_input.isEmpty()) {
-			this.discount = 0;
 			return false;
 		}
 		user_input = this.dataClean(user_input);
 		if (user_input.isEmpty() || user_input.startsWith("-")) {
-			this.discount = 0;
 			return false;
 		}
 		if (!user_input.contains(".")) {
