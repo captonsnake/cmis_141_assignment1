@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.function.*;
 
 /**
- * This is a simple CLI tool to create an Order.
+ * This is a simple CLI tool to create an Order and display an order receipt.
  * Date: 2022 Feb 02
  * Written for CMIS 141 Assignment 1
  * @author Samual McCracken
@@ -20,6 +20,9 @@ public class Main {
 	private static Scanner scanner = null;
 	
 	public static void getInput(String prompt, Function<String, Boolean> setFunc) {
+		// This loop allows for a user to input until the setter returns true.
+		// This means a user will be prompted multiple times until the input
+		// meets the requirements of the associated setter in Order.setFunc()
 		while(true) {
 			System.out.printf("%s", prompt);
 			String user_input = scanner.nextLine();
@@ -36,7 +39,13 @@ public class Main {
 		scanner = new Scanner(System.in);
 		
 		while(true) {
-			// main loop
+			// Main Loop Notes:
+			// This main loop allows for the program to be ran
+			// multiple times until the user decides to quit (i.e. Type anything other than y at the end)
+			
+			// getInput Notes:
+			// I used method references here. I could have made the 
+			// order a class attribute, but that wouldn't be very modular.
 				getInput("Enter Cust ID:     ", order::setCustomerID);
 				getInput("Enter Unit Price:  ", order::setUnitPrice);
 				getInput("Enter Quantity:    ", order::setQuantity);
@@ -45,6 +54,7 @@ public class Main {
 				
 				System.out.printf("%s\n", order.getOrderData());
 				
+				// Break the loop and exit program prompt.
 				System.out.println("Is this correct (y/n): ");
 				String reply = scanner.nextLine();
 				
