@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class OrderTest {
-	private static Stream<Arguments> decimalNotAllowed() {
+	private static Stream<Arguments> integer() {
 		return Stream.of(
 				Arguments.of("", 0, false),
 				Arguments.of(null, 0, false),
@@ -23,7 +23,7 @@ class OrderTest {
 	}
 	
 	@ParameterizedTest
-	@MethodSource("decimalNotAllowed")
+	@MethodSource("integer")
 	void testSetCustomerIdStringParams(String s, int i, boolean b) {
 		Order order = new Order();
 		
