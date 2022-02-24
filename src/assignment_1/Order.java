@@ -6,12 +6,18 @@ package assignment_1;
  */
 public class Order {
 	
+	// Attributes of an order
 	int customer_ID = 0;
 	float unit_price = 0f;
 	int quantity = 0;
 	String description = null;
 	float discount = 0f;
 	
+	/**
+	 * Sets the order Customer ID
+	 * @param user_input String of user input
+	 * @return true if meets requirements for attribute
+	 */
 	boolean setCustomerID(String user_input) {
 		if (user_input == null) {
 			this.customer_ID = 0;
@@ -36,6 +42,11 @@ public class Order {
 			
 	}
 	
+	/**
+	 * Sets the Order Unit Price
+	 * @param user_input String of user input
+	 * @return true if meets requirements for attribute
+	 */
 	boolean setUnitPrice(String user_input) {
 		if (user_input == null) {
 			this.unit_price = 0;
@@ -59,6 +70,12 @@ public class Order {
 		return true;
 	}
 
+	/**
+	 * Sets the Order Quantity
+	 * 
+	 * @param user_input String of user input
+	 * @return true if meets requirements for attribute
+	 */
 	boolean setQuantity(String user_input) {
 		if (user_input == null) {
 			this.quantity = 0;
@@ -81,6 +98,12 @@ public class Order {
 		return true;
 	}
 	
+	/**
+	 * Sets the Order Description
+	 * 
+	 * @param user_input String of user input
+	 * @return true if meets requirements for attribute
+	 */
 	boolean setDescription(String user_input) {
 		if (user_input == null) {
 			this.description = null;
@@ -91,6 +114,12 @@ public class Order {
 		return true;
 	}
 	
+	/**
+	 * Sets the Order Discount
+	 * 
+	 * @param user_input String of user input
+	 * @return true if meets requirements for attribute
+	 */
 	boolean setDiscount(String user_input) {
 		if (user_input == null || user_input.isEmpty()) {
 			this.discount = 0;
@@ -130,6 +159,8 @@ public class Order {
 	}
 	
 	/**
+	 * Gets the Order total before Discount applied
+	 * 
 	 * @return Float of Order total before Discounts
 	 */
 	float getPreDiscountTotal() {
@@ -137,6 +168,8 @@ public class Order {
 	}
 	
 	/**
+	 * Gets the Order total after discounts applied
+	 * 
 	 * @return Float of Order total after discounts
 	 */
 	float getPostDiscountTotal() {
@@ -144,6 +177,8 @@ public class Order {
 	}
 	
 	/**
+	 * Gets a string of Order details in human readable format
+	 * 
 	 * @return String of Order details in human readable format
 	 */
 	String getOrderData()
