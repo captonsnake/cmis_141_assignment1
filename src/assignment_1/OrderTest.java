@@ -2,9 +2,38 @@ package assignment_1;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class OrderTest {
+	private static Stream<Arguments> decimalNotAllowed() {
+		return Stream.of(
+				Arguments.of("", 0, false),
+				Arguments.of(null, 0, false),
+				Arguments.of("1234",1234,true),
+				Arguments.of("abcd", 0, false),
+				Arguments.of("a123", 123, true),
+				Arguments.of("-13", 0, false),
+				Arguments.of("13.1", 131, true)
+				);
+	}
+	
+	@ParameterizedTest
+	@MethodSource("decimalNotAllowed")
+	void testSetCustomerIdStringParams(String s, int i, boolean b) {
+		Order order = new Order();
+		
+		if (b) {
+			assertTrue(order.setCustomerID(s));
+		} else {
+			assertFalse(order.setCustomerID(s));
+		}
+		assertEquals(order.customer_ID, i);
+	}
 
 	@Test
 	void testSetCustomerID() {
