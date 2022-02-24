@@ -13,12 +13,12 @@ import java.util.function.*;
  */
 public class Main {
 	
+	private static Scanner scanner = null;
+	
 	/**
 	 * @param prompt This is the prompt displayed to the user
 	 * @param setFunc This is a method reference to the setter for the attribute to set
 	 */
-	private static Scanner scanner = null;
-	
 	public static void getInput(String prompt, Function<String, Boolean> setFunc) {
 		// This loop allows for a user to input until the setter returns true.
 		// This means a user will be prompted multiple times until the input
