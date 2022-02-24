@@ -1,5 +1,9 @@
 package assignment_1;
 
+/**
+ * @author Samual McCracken
+ *
+ */
 public class Order {
 	
 	int customer_ID = 0;
@@ -98,7 +102,6 @@ public class Order {
 			return false;
 		}
 		if (!user_input.contains(".")) {
-			// TODO: BUG here. 5 becomes .50
 			if (user_input.length() == 1)
 			{
 				user_input = "0" + user_input;
@@ -126,14 +129,23 @@ public class Order {
 		return true;
 	}
 	
+	/**
+	 * @return Float of Order total before Discounts
+	 */
 	float getPreDiscountTotal() {
 		return this.unit_price * this.quantity;
 	}
 	
+	/**
+	 * @return Float of Order total after discounts
+	 */
 	float getPostDiscountTotal() {
 		return this.getPreDiscountTotal() * (1 - this.discount);
 	}
 	
+	/**
+	 * @return String of Order details in human readable format
+	 */
 	String getOrderData()
 	{
 		String output = """
@@ -160,10 +172,22 @@ public class Order {
 		
 	}
 	
+	/**
+	 * This method calls dataClean() with the allowDecimal boolean set to true.
+	 * 
+	 * @param user_input String of user input
+	 * @return String of cleaned user input
+	 */
 	private String dataClean(String user_input) {
 		return this.dataClean(user_input, true);
 	}
 	
+	/**
+	 * This function removes unnecessary characters
+	 * @param user_input String of user input
+	 * @param allowDecimal If true keep decimal points, if false remove decimals
+	 * @return String of cleaned user input
+	 */
 	private String dataClean(String user_input, boolean allowDecimal) {
 		if (!allowDecimal) {
 			user_input = user_input.replaceAll("\\.", "");

@@ -3,8 +3,20 @@ package assignment_1;
 import java.util.Scanner;
 import java.util.function.*;
 
+/**
+ * This is a simple CLI tool to create an Order.
+ * Date: 2022 Feb 02
+ * Written for CMIS 141 Assignment 1
+ * @author Samual McCracken
+ * @version 1.0
+ * 
+ */
 public class Main {
 	
+	/**
+	 * @param prompt This is the prompt displayed to the user
+	 * @param setFunc This is a method reference to the setter for the attribute to set
+	 */
 	public static void getInput(String prompt, Function<String, Boolean> setFunc) {
 		Scanner scanner = new Scanner(System.in);
 		while(true) {
@@ -19,10 +31,6 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		/*
-		 * Assignment 1 for UMGC
-		 * Creator: Samual McCracken
-		 */
 		Order order = new Order();
 		
 		while(true) {
