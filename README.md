@@ -1,5 +1,6 @@
 # Assignment 1
 Author: Samual McCracken
+
 Class: CMIS 141
 
 ## Description
@@ -10,3 +11,6 @@ number), product description, and discount in this format (e.g., .10) (use Scann
 
 ## Tests
 See src/OrderTest.java
+
+
+![tests passing](img/tests.PNG)
