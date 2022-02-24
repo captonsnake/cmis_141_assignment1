@@ -27,6 +27,7 @@ public class Main {
 			}
 			System.out.println("Invalid input, try again.");
 		}
+		scanner.close();
 		return;
 	}
 
@@ -46,6 +47,7 @@ public class Main {
 				System.out.println("Is this correct (y/n): ");
 				Scanner scanner = new Scanner(System.in);
 				String reply = scanner.nextLine();
+				scanner.close();
 				
 				if (reply.equalsIgnoreCase("y")) {
 					System.out.println("Order Complete");
