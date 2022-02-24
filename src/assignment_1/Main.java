@@ -17,8 +17,9 @@ public class Main {
 	 * @param prompt This is the prompt displayed to the user
 	 * @param setFunc This is a method reference to the setter for the attribute to set
 	 */
+	private static Scanner scanner = null;
+	
 	public static void getInput(String prompt, Function<String, Boolean> setFunc) {
-		Scanner scanner = new Scanner(System.in);
 		while(true) {
 			System.out.printf("%s", prompt);
 			String user_input = scanner.nextLine();
@@ -27,12 +28,12 @@ public class Main {
 			}
 			System.out.println("Invalid input, try again.");
 		}
-		scanner.close();
 		return;
 	}
 
 	public static void main(String[] args) {
 		Order order = new Order();
+		scanner = new Scanner(System.in);
 		
 		while(true) {
 			// main loop
@@ -45,9 +46,7 @@ public class Main {
 				System.out.printf("%s\n", order.getOrderData());
 				
 				System.out.println("Is this correct (y/n): ");
-				Scanner scanner = new Scanner(System.in);
 				String reply = scanner.nextLine();
-				scanner.close();
 				
 				if (reply.equalsIgnoreCase("y")) {
 					System.out.println("Order Complete");
@@ -56,5 +55,6 @@ public class Main {
 				System.out.println("Please try again.");
 				
 		}
+		scanner.close();
 	}
 }
