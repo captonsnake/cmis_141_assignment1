@@ -14,3 +14,10 @@ See src/OrderTest.java
 
 
 ![tests passing](img/tests.PNG)
+
+## Example Runs
+![Example 1](img/example1.PNG)
+
+![Example 2](img/example2.PNG)
+
+![Example 3](img/example3.PNG)
