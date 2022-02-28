@@ -193,6 +193,8 @@ public class Order {
 	/**
 	 * This method calls dataClean() with the allowDecimal boolean set to true.
 	 * 
+	 * Also demonstrates use of method overwriting (which is cool btw)
+	 * 
 	 * @param user_input String of user input
 	 * @return String of cleaned user input
 	 */
@@ -207,6 +209,10 @@ public class Order {
 	 * @return String of cleaned user input
 	 */
 	private String dataClean(String user_input, boolean allowDecimal) {
+		// This dataClean method can produce some unexpected results to the end user.
+		// Ideally I'd spend a lot more time making the program more predictable.
+		// However, I don't think its worth it here. The user will just have to
+		// check the output before "accepting" 
 		if (!allowDecimal) {
 			user_input = user_input.replaceAll("\\.", "");
 		}

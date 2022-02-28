@@ -5,7 +5,7 @@ import java.util.function.*;
 
 /**
  * This is a simple CLI tool to create an Order and display an order receipt.
- * Date: 2022 Feb 02
+ * Date: 2022 Feb 28
  * Written for CMIS 141 Assignment 1
  * @author Samual McCracken
  * @version 1.0
@@ -51,9 +51,12 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Order order = new Order();
+		
+		// Initialize the scanner to use in main
 		scanner = new Scanner(System.in);
 		
+		// Demonstrating use of while loops
+		// This loop continues to iterate until the user decides to quit by typing anything other than "y || Y" at the prompt
 		while(true) {
 			Order order = new Order();
 
@@ -87,6 +90,8 @@ public class Main {
 			System.out.println("Please try again.");
 				
 		}
+		
+		// close scanner resource
 		scanner.close();
 	}
 }

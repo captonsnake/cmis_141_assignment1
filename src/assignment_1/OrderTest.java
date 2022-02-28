@@ -10,8 +10,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class OrderTest {
-	// Doing this to learn some papameterized testing
+	// Doing this to learn some parameterized testing
 	private static Stream<Arguments> integer() {
+		// This steam is of a String to send to the setter
+		// and a boolean that is true if assertTrue and false if assertFalse
+		// should be tested.
 		return Stream.of(
 				Arguments.of("", 0, false),
 				Arguments.of(null, 0, false),
@@ -36,6 +39,7 @@ class OrderTest {
 		assertEquals(order.customer_ID, i);
 	}
 
+	// This is basically the same test as above but without params
 	@Test
 	void testSetCustomerID() {
 		Order order = new Order();
@@ -144,8 +148,6 @@ class OrderTest {
 	void testSetDiscount() {
 		Order order = new Order();
 		
-		//many of these tests pass but for the wrong reasons...
-		
 		assertTrue(order.setDiscount(".10"));
 		assertEquals(order.discount, 0.1f);
 		
@@ -186,6 +188,7 @@ class OrderTest {
 		
 		assertEquals(order.getPreDiscountTotal(), 0);
 		
+		// Some gross O(n^2) ...
 		for(int i = 0; i < 100; i++) {
 			for (float j = 0; j < 10; j += 0.01f) {
 				float total = i * j;
@@ -202,6 +205,7 @@ class OrderTest {
 		
 		assertEquals(order.getPostDiscountTotal(), 0);
 		
+		// And you thought the O(n^2) above was gross ... how about some O(n^3)
 		for(int i = 0; i < 100; i++) {
 			for (float j = 0; j < 10; j += 0.01) {
 				for (float k = 0; k <= 1; k += 0.01f) {
@@ -214,6 +218,7 @@ class OrderTest {
 			}
 		}
 		
+		// Testing known good calculations
 		order.unit_price = 1.25f;
 		order.quantity = 4;
 		order.discount = 0.1f;
