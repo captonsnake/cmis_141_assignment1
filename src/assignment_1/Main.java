@@ -16,6 +16,22 @@ public class Main {
 	private static Scanner scanner = null;
 	
 	/**
+	 * This struct holds the prompt and setter function for
+	 * an Order so that it may easily be saved in a 1d array
+	 */
+	static class InputPromptStruct {
+		String prompt;
+		Function<String, Boolean> setFunc;
+		
+		//Constructor
+		public InputPromptStruct(String s, Function<String, Boolean> f) {
+			this.prompt = s;
+			this.setFunc = f;
+		}
+		
+	}
+	
+	/**
 	 * @param prompt This is the prompt displayed to the user
 	 * @param setFunc This is a method reference to the setter for the attribute to set
 	 */
@@ -39,18 +55,24 @@ public class Main {
 		scanner = new Scanner(System.in);
 		
 		while(true) {
-			// Main Loop Notes:
-			// This main loop allows for the program to be ran
-			// multiple times until the user decides to quit (i.e. Type anything other than y at the end)
+			Order order = new Order();
+
+			//Using this to demonstrate use of Arrays
+			// This 1d array holds the InputPromptStruct objects that are used
+			// to call the setters for an order
+			InputPromptStruct[] inputArray = new InputPromptStruct[] {
+					new InputPromptStruct("Enter Cust ID:     ", order::setCustomerID),
+					new InputPromptStruct("Enter Unit Price:  ", order::setUnitPrice),
+					new InputPromptStruct("Enter Quantity:    ", order::setQuantity),
+					new InputPromptStruct("Enter Description: ", order::setDescription),
+					new InputPromptStruct("Enter Discount:    ", order::setDiscount)
+			};
 			
-			// getInput Notes:
-			// I used method references here. I could have made the 
-			// order a class attribute, but that wouldn't be very modular.
-			getInput("Enter Cust ID:     ", order::setCustomerID);
-			getInput("Enter Unit Price:  ", order::setUnitPrice);
-			getInput("Enter Quantity:    ", order::setQuantity);
-			getInput("Enter Description: ", order::setDescription);
-			getInput("Enter Discount:    ", order::setDiscount);
+			//Demonstrating use of for loops
+			//Loop iterates thru inputArray and calls getInput for each item
+			for (int i = 0; i < inputArray.length; i++) {
+				getInput(inputArray[i].prompt, inputArray[i].setFunc);
+			}
 			
 			System.out.printf("%s\n", order.getOrderData());
 			
